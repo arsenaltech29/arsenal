@@ -1,22 +1,28 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { X, ArrowRight } from "lucide-react";
+import { X, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const allPortfolioImages = [
+const portfolioImages = [
     { id: 1, src: "/jewelry.jpg", alt: "Jewelry Project" },
     { id: 2, src: "/watermelon.PNG", alt: "Watermelon Project" },
     { id: 3, src: "/purse.PNG", alt: "Purse Project" },
     { id: 4, src: "/keychain.jpg", alt: "Keychain Project" },
-    { id: 5, src: "/chips.jpg", alt: "Chips Project" },
+    { id: 5, src: "/bowl1in.png", alt: "Bowl Project" },
     { id: 6, src: "/showergel.jpg", alt: "Shower Gel Project" },
     { id: 7, src: "/headphones.PNG", alt: "Headphones Project" },
-    { id: 8, src: "/perfume.jpg", alt: "Perfume Project" },
-    { id: 9, src: "/burger.jpg", alt: "Burger Project" },
+    { id: 8, src: "/tableig.png", alt: "Table Project" },
+    { id: 9, src: "/bowl2us.png", alt: "Bowl Project" },
+    { id: 10, src: "/matcha.png", alt: "Matcha Project" },
+    { id: 11, src: "/energydrink.png", alt: "Energy Drink Project" },
+    { id: 12, src: "/chips.jpg", alt: "Chips Project" },
+    { id: 13, src: "/chococoffee.png", alt: "Choco Coffee Project" },
+    { id: 14, src: "/dessert.png", alt: "Dessert Project" },
+    { id: 15, src: "/burger.jpg", alt: "Burger Project" },
+    { id: 16, src: "/shoes.jpg", alt: "Shoes Project" },
+    { id: 17, src: "/pista.png", alt: "Pista Project" },
+    { id: 18, src: "/perfume.jpg", alt: "Perfume Project" },
 ];
-
-// Display only first 6 images in portfolio section
-const portfolioImages = allPortfolioImages.slice(0, 6);
 
 interface ImageModal {
     id: number;
@@ -26,7 +32,7 @@ interface ImageModal {
     naturalHeight?: number;
 }
 
-export default function Portfolio() {
+export default function Collection() {
     const ref = useRef<HTMLElement>(null);
     const inView = useInView(ref, { once: true, margin: "-80px" });
     const [selectedImage, setSelectedImage] = useState<ImageModal | null>(null);
@@ -34,6 +40,11 @@ export default function Portfolio() {
         width: number;
         height: number;
     } | null>(null);
+
+    // Scroll to top on component mount
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (selectedImage) {
@@ -58,57 +69,48 @@ export default function Portfolio() {
     };
 
     return (
-        <section ref={ref} id="work" className="relative py-32 overflow-hidden">
+        <section
+            ref={ref}
+            className="relative min-h-screen bg-arsenal-dark overflow-hidden pt-40 pb-32"
+        >
             <div className="absolute inset-0 bg-arsenal-dark" />
             <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-arsenal-gold/3 rounded-full blur-[120px]" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-6">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                    <div>
-                        <motion.div
-                            className="flex items-center gap-3 mb-6"
-                            initial={{ opacity: 0 }}
-                            animate={inView ? { opacity: 1 } : {}}
-                        >
-                            <div className="w-6 h-px bg-arsenal-gold" />
-                            <span className="text-xs tracking-[0.3em] uppercase font-mono text-arsenal-gold">
-                                Our Work
-                            </span>
-                        </motion.div>
-
-                        <motion.h2
-                            className="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-white"
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ delay: 0.1 }}
-                        >
-                            THE
-                            <span className="block gradient-text">
-                                SHOWCASE
-                            </span>
-                        </motion.h2>
-                    </div>
-
-                    <motion.p
-                        className="text-arsenal-silver max-w-xs font-body text-sm leading-relaxed"
-                        initial={{ opacity: 0 }}
-                        animate={inView ? { opacity: 1 } : {}}
-                        transition={{ delay: 0.3 }}
+                {/* Header with back button */}
+                <div className="flex items-center gap-4 mb-8">
+                    <Link
+                        to="/"
+                        className="flex items-center justify-center w-10 h-10 rounded-full border border-arsenal-gold/50 hover:bg-arsenal-gold/10 transition-all duration-300 text-arsenal-gold"
                     >
-                        A glimpse at the creative excellence we bring to every
-                        project. Click any image to view in full detail.
-                    </motion.p>
+                        <ArrowLeft size={20} />
+                    </Link>
+                    <h1 className="font-display text-[clamp(2.5rem,6vw,5rem)] leading-none text-white">
+                        COMPLETE
+                        <span className="block gradient-text">COLLECTION</span>
+                    </h1>
                 </div>
 
-                {/* Responsive Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+                <motion.p
+                    className="text-arsenal-silver max-w-lg font-body text-sm leading-relaxed mb-12"
+                    initial={{ opacity: 0 }}
+                    animate={inView ? { opacity: 1 } : {}}
+                    transition={{ delay: 0.2 }}
+                >
+                    Explore our entire portfolio of creative works. Click any
+                    image to view in full detail and discover the artistry
+                    behind every creation.
+                </motion.p>
+
+                {/* Full Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {portfolioImages.map((image, i) => (
                         <motion.div
                             key={image.id}
                             className="relative rounded-xl overflow-hidden cursor-pointer group aspect-square bg-arsenal-dark/50"
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={inView ? { opacity: 1, scale: 1 } : {}}
-                            transition={{ duration: 0.6, delay: i * 0.06 }}
+                            transition={{ duration: 0.6, delay: i * 0.05 }}
                             onClick={() => handleImageClick(image)}
                             data-hover
                         >
@@ -138,27 +140,6 @@ export default function Portfolio() {
                         </motion.div>
                     ))}
                 </div>
-
-                {/* View All Collection Button */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.4 }}
-                    className="flex justify-center"
-                >
-                    <Link
-                        to="/collection"
-                        className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl border border-arsenal-gold/50 hover:border-arsenal-gold hover:bg-arsenal-gold/10 transition-all duration-300"
-                    >
-                        <span className="text-arsenal-gold font-body font-medium tracking-wide">
-                            VIEW COMPLETE COLLECTION
-                        </span>
-                        <ArrowRight
-                            size={18}
-                            className="text-arsenal-gold group-hover:translate-x-1 transition-transform duration-300"
-                        />
-                    </Link>
-                </motion.div>
             </div>
 
             {/* Dynamic Modal - Responsive to image dimensions */}
