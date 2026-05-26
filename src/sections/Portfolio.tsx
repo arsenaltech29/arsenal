@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const allPortfolioImages = [
     { id: 1, src: "/jewelry.jpg", alt: "Jewelry Project" },
-    { id: 2, src: "/watermelon.PNG", alt: "Watermelon Project" },
+    { id: 2, src: "/energydrink.png", alt: "Energy Drink Project" },
     { id: 3, src: "/purse.PNG", alt: "Purse Project" },
-    { id: 4, src: "/keychain.jpg", alt: "Keychain Project" },
-    { id: 5, src: "/chips.jpg", alt: "Chips Project" },
-    { id: 6, src: "/showergel.jpg", alt: "Shower Gel Project" },
+    { id: 4, src: "/baggy.png", alt: "Baggy Project" },
+    { id: 5, src: "/showergel.jpg", alt: "Shower Gel Project" },
+    { id: 6, src: "/dress1.png", alt: "Dress Project" },
     { id: 7, src: "/headphones.PNG", alt: "Headphones Project" },
     { id: 8, src: "/perfume.jpg", alt: "Perfume Project" },
     { id: 9, src: "/burger.jpg", alt: "Burger Project" },

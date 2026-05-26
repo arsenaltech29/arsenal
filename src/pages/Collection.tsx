@@ -19,9 +19,15 @@ const portfolioImages = [
     { id: 13, src: "/chococoffee.png", alt: "Choco Coffee Project" },
     { id: 14, src: "/dessert.png", alt: "Dessert Project" },
     { id: 15, src: "/burger.jpg", alt: "Burger Project" },
-    { id: 16, src: "/shoes.jpg", alt: "Shoes Project" },
     { id: 17, src: "/pista.png", alt: "Pista Project" },
     { id: 18, src: "/perfume.jpg", alt: "Perfume Project" },
+    { id: 19, src: "/baggy.png", alt: "Baggy Project" },
+    { id: 20, src: "/cafe-an.PNG", alt: "Cafe Project" },
+    { id: 21, src: "/dress1.png", alt: "Dress Project" },
+    { id: 22, src: "/lacoste.PNG", alt: "Lacoste Project" },
+    { id: 23, src: "/puma.PNG", alt: "Puma Project" },
+    { id: 24, src: "/purse-h.jpg", alt: "Purse Project" },
+    { id: 25, src: "/shoes2.png", alt: "Shoes Project" },
 ];
 
 interface ImageModal {
